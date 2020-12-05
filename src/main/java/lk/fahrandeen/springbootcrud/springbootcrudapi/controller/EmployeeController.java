@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lk.fahrandeen.springbootcrud.springbootcrudapi.model.Employee;
+import lk.fahrandeen.springbootcrud.springbootcrudapi.model.Friend;
 import lk.fahrandeen.springbootcrud.springbootcrudapi.service.EmployeeService;
 
 @RestController
@@ -53,9 +54,10 @@ public class EmployeeController {
 		return "Employee has been deleted with id : "+id;
 	}
 	
-	@PutMapping("/employee")
-	public Employee update(@RequestBody Employee employeeObj) {
+	@PutMapping("/employee/{id}/edit")
+	public Employee update(@PathVariable("id") int id, @RequestBody Employee employeeObj) {
 		employeeService.save(employeeObj);
 		return employeeObj;
 	}
+
 }
